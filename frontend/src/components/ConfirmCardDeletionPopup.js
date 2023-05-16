@@ -1,7 +1,7 @@
 import React from 'react';
 import PopupWithForm from './PopupWithForm';
 
-export default function ConfirmCardDeletionPopup({ card, onCardDelete, ...commonProps } ) {
+function ConfirmCardDeletionPopup({ card, onCardDelete, ...commonProps } ) {
 
 	function handleSubmit(evt) {		
     evt.preventDefault();
@@ -15,8 +15,8 @@ export default function ConfirmCardDeletionPopup({ card, onCardDelete, ...common
 					buttonText="Да"					
 					onSubmit={handleSubmit}		
 					{...commonProps}		
-				/>
-					
-				
+				/>				
 	)
 }
+
+export default ConfirmCardDeletionPopup;

@@ -2,11 +2,9 @@ import React from 'react';
 import garbageBtn from './../images/garbage.svg';
 import likeBtn from './../images/favorite-black.svg';
 import dislikeBtn from './../images/add-favorites.svg';
-
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-
-function Card({ card, onCardClick, onCardLike, onCardDeleteClick }) {	
+function Card({ card, id, onCardClick, onCardLike, onCardDeleteClick }) {	
 
 	const currentUser = React.useContext(CurrentUserContext);
 	const isOwn = card.owner._id === currentUser._id;
@@ -26,7 +24,7 @@ function Card({ card, onCardClick, onCardLike, onCardDeleteClick }) {
 
 	
 	return (
-		<figure className="gallery__card-body">
+		<div className="gallery__card-body">
 			{
 			isOwn &&
 			<img src={garbageBtn} className="gallery__delete" alt="Удалить"
@@ -51,7 +49,7 @@ function Card({ card, onCardClick, onCardLike, onCardDeleteClick }) {
 					<p className="gallery__likes-counter">{card.likes.length}</p>					
 				</div>
 			</figcaption>
-		</figure>
+		</div>
 	)
 }
 
