@@ -9,10 +9,6 @@
 # Ссылки на проект
 
 ## IP-адрес  158.160.106.148
-
-## IP-адрес  158.160.106.148
-## Frontend http://project-mesto.students.nomoredomains.monster
-
 ## Frontend http://project-mesto.students.nomoredomains.monster
 
 ## Backend https://api.project-mesto.student.nomoredomains.monster
