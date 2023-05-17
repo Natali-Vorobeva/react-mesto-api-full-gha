@@ -8,9 +8,10 @@
 
 # Ссылки на проект
 
-## ДОМЕН: project-mesto.students.nomoredomains.monster
+## IP-адрес  158.160.106.148
 
 ## IP-адрес  158.160.106.148
+## Frontend http://project-mesto.students.nomoredomains.monster
 
 ## Frontend http://project-mesto.students.nomoredomains.monster
 
