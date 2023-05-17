@@ -8,7 +8,6 @@ const routes = require('./routes');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const NOT_FOUND_ERROR_CODE = 404;
 const BAD_REQUEST_ERROR_CODE = 400;
 
 const { PORT = 3000 } = process.env;
@@ -45,10 +44,6 @@ app.use(errorLogger);
 
 app.use(errors());
 app.use((err, req, res, next) => {
-  if (err.name === 'CastError') {
-    res.status(NOT_FOUND_ERROR_CODE).send({ message: '404 — Не найдено' });
-    return;
-  }
   if (err.name === 'ValidationError ') {
     res.status(BAD_REQUEST_ERROR_CODE).send({ message: '400 — Переданы некорректные данные' });
     return;

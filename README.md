@@ -8,6 +8,9 @@
 
 # Ссылки на проект
 
+## ДОМЕН: project-mesto.students.nomoredomains.monster
+## ДОМЕН СЕРВЕРА: api.project-mesto.student.nomoredomains.monster
+
 ## IP-адрес  158.160.106.148
 ## Frontend http://project-mesto.students.nomoredomains.monster
 

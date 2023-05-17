@@ -28,10 +28,6 @@ async function deleteCard(req, res, next) {
     const { cardId } = req.params;
 
     const card = await Card.findById(cardId).populate('owner');
-
-    if (!card) {
-      throw new NotFoundError('Карточка не найдена');
-    }
     const ownerId = card.owner.id;
     const userId = req.user._id;
 
@@ -55,7 +51,7 @@ const likeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
     req.params.cardId,
     { $addToSet: { likes: req.user._id } },
-    { new: true, runValidators: true },
+    { new: true },
   )
     .orFail(new NotFoundError('Не найдено.'))
     .then((card) => {
@@ -72,7 +68,7 @@ const deleteLike = (req, res, next) => {
     {
       $pull: { likes: req.user._id },
     },
-    { new: true, runValidators: true },
+    { new: true },
   )
     .orFail(new NotFoundError('Не найдено.'))
     .then((card) => {
