@@ -10,10 +10,8 @@
 
 # Ссылки на проект
 
-## ДОМЕН: project-mesto.students.nomoredomains.monster
+## IP-адрес  158.160.106.148
 
-## IP-адрес  158.160.97.234
+## Frontend http://project-mesto.students.nomoredomains.monster
 
-## Frontend https://github.com/Natali-Vorobeva/react-mesto-auth
-
-## Backend https://github.com/Natali-Vorobeva/express-mesto-gha
+## Backend https://api.project-mesto.student.nomoredomains.monster
