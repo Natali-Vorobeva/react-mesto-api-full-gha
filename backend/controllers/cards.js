@@ -23,29 +23,30 @@ async function createCards(req, res, next) {
   }
 }
 
-async function deleteCard(req, res, next) {
-  try {
-    const { cardId } = req.params;
+const deleteCard = (req, res, next) => {
+  const owner = req.user._id;
 
-    const card = await Card.findById(cardId).populate('owner');
-    const ownerId = card.owner.id;
-    const userId = req.user._id;
+  Card.findById(req.params.cardId)
+    .orFail(new NotFoundError('Карточка не найдена.'))
+    .then((card) => {
+      if (card.owner.toString() !== owner) {
+        throw new ForbiddenError('Отсутствие прав на удаление карточки.');
+      }
 
-    if (ownerId !== userId) {
-      throw new ForbiddenError('Нельзя удалить чужую карточку');
-    }
-
-    if (!cardId) {
-      throw new NotFoundError('Карточка не найдена');
-    }
-
-    await Card.deleteOne(card);
-
-    res.send(card);
-  } catch (err) {
-    next(err);
-  }
-}
+      // уже можно удалить карточку
+      return Card.findByIdAndRemove(req.params.cardId);
+    })
+    .then((delCard) => {
+      res.send(delCard);
+    })
+    .catch((err) => {
+      if (err.kind === 'ObjectId') {
+        next(new NotFoundError('Некорректный формат id.'));
+      } else {
+        next(err);
+      }
+    });
+};
 
 const likeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
